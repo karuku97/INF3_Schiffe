@@ -73,7 +73,7 @@ int BruteForce(TCPclient c){
 		}
 
 		Part1:
-		cout << "Moves: "<< moves <<endl;
+		//cout << "Moves: "<< moves <<endl;
 		return moves;
 }
 
