@@ -15,10 +15,10 @@ protected:
 
 private:
 	 TASK3::World w;
-	 int x,y;
+
 	 TASK3::ShootResult res;
 
-	 vector<int> convKord(string input);
+
 
 
 

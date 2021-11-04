@@ -24,70 +24,63 @@
 
 int main(){
 	srand(time(nullptr));
-	myServer srv(2021,25);
+	myServer srv(2020,25);
 
 
 
 	srv.run();
 }
 
-vector<int> myServer::convKord(string input){
-
-		istringstream ss {input};
-		vector<int> stringV;
-
-		while(ss.good()){
-			string substr ;
-			std::getline(ss,substr, '/');
-			stringV.push_back(stoi(substr));
-		}
-
-	    return stringV;
-}
 
 
 string myServer::myResponse(string input){
 
-
-	// if(input.compare(0,4)==0){};  alternative zu case?
-	// terminal "telnet localhost port"
-	vector<int> kords ;
-
-	std::cout << std::endl<<std::endl ;
-
-
-
-	std::cout << std::endl<<std::endl ;
-
-	kords = convKord(input);
-
-
+	if(input.compare(0,5,"KORDS") == 0){
+			int xPos = input.find("X");
+			int yPos = input.find("Y");
+			int end = input.find("#");
+			int x = stoi(input.substr(xPos+1,yPos-xPos-1));
+			int y = stoi(input.substr(yPos+1,end-yPos-1));
 			string result;
-			res = w.shoot(kords[0],kords[1]);
-			cout << "shoot: (" << kords[0] << ", " << kords[1] << ") --> " << res << endl;
+
+			std::cout << std::endl<<std::endl ;
+
+			res = w.shoot(x,y);
+			cout << "shoot: (" << x << ", " << y << ") --> " << res << endl;
 
 			switch (res)
 			{
-			case 0 :
-				result =  "water";
-				break;
-			case 1 :
-				result =  "Ship Hit";
-				break;
-			case 2 :
-				result =  "Ship Destroyed";
-				break;
-			case 3 :
-				result =  "All Ships Destroyed";
-				break;
-			case 4 :
-				result =  "Game Over";
-				break;
+				case 0 :
+					result =  "Water";
+					break;
+				case 1 :
+					result =  "Ship Hit";
+					break;
+				case 2 :
+					result =  "Ship Destroyed";
+					break;
+				case 3 :
+					result =  "All Ships Destroyed";
+					break;
+				case 4 :
+					result =  "Game Over";
+					break;
 
 
-			}
+				}
 
-	w.printBoard();
-	return result;
+			w.printBoard();
+			return result;
+
+	}else if(input.compare(0,7,"RESTART") ==0 ){
+		TASK3::World newWorld;
+		w =  newWorld;
+		w.printBoard();
+		return "RESTARTED";
+	}
+	else{
+			return "ERROR";
+		}
+
 }
 
