@@ -1,0 +1,5 @@
+TASK1.o: ../TASK1.C ../TASK1.H ../SHA256.H
+
+../TASK1.H:
+
+../SHA256.H:
