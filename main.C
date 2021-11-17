@@ -26,7 +26,7 @@ using namespace std;
 
 
 int main(){
-	cout<<"Hello World!";
+
 	int x,y;
 
 	string str = "1/5";
