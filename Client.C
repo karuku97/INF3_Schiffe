@@ -42,7 +42,7 @@ int main() {
 	}
 
 
-	cout<< "AvarageMoves: "<< movesAvg<<endl;
+	cout<<endl<< "----------"<<endl<< "AvarageMoves(BruteForce): "<< movesAvg<<endl<<"-----------"<<endl;
 
 
 
