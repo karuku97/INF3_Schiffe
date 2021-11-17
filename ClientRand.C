@@ -29,10 +29,23 @@ int main() {
 
 
 	double movesAvg = 0.0;
+	int anz=10;
 
-	movesAvg = RandShoot(c);
+	for(int i = 0; i< anz;i++){
+			if(i==0){
+				movesAvg = RandShoot(c);
+				restart(c);
+			}
+			else{
+				movesAvg = (movesAvg+RandShoot(c)) /2;
+				restart(c);
+			}
+		}
 
-	cout<<endl<< "----------"<<endl<< "AvarageMoves(BruteForce): "<< movesAvg<<endl<<"-----------"<<endl;
+
+
+
+	cout<<endl<< "----------"<<endl<< "AvarageMoves(Random): "<< movesAvg<<endl<<"-----------"<<endl;
 
 
 
@@ -43,8 +56,8 @@ int RandShoot(TCPclient c){
 	string msg;
 	int moves=0;
 	while(1){
-		int x = rand()%10;
-		int y = rand()%10;
+		int x = (rand()%10)+1;
+		int y = (rand()%10)+1;
 
 		ss.str("");
 		ss <<"KORDSX"<< x << "Y" << y<<"#";

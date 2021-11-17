@@ -4,7 +4,7 @@ CFLAGS=$(shell pkg-config --cflags opencv)
 LIBS=$(shell pkg-config --libs opencv) 
 
 OBJS= main.o   TASK3.o  SIMPLESOCKET.o 
-DEMOTARGET=main Server Client
+DEMOTARGET=main Server Client ClientRand
 
 
 SIMPLESOCKET.o:	SIMPLESOCKET.C
@@ -19,7 +19,8 @@ TASK3.o:	TASK3.C
 main.o:	main.C
 	$(CC) -c $<  -std=c++11	
 
-
+ClientRand.o:	ClientRand.C
+	$(CC) -c $<  -std=c++11
 	
 Client.o:	Client.C
 	$(CC) -c $<  -std=c++11
@@ -42,6 +43,9 @@ Server:	Server.o
 Client:	Client.o
 	$(CC) -o Client Client.o SIMPLESOCKET.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
 
+ClientRand:	ClientRand.o
+	$(CC) -o ClientRand ClientRand.o SIMPLESOCKET.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
+	
 clean:
 	-rm -r -f   $(DEMOTARGET) *.o DOXYGENDOC  *.txt
 
@@ -50,7 +54,7 @@ doc:
 
 
 all:	$(DEMOTARGET)
-	make clean  && make main &&make Server && make Client
+	make clean  && make main &&make Server && make Client && make ClientRand
 
 run:	main	
 	./main
