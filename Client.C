@@ -11,10 +11,12 @@
 #include <sstream>
 #include <vector>
 
+#include "SIMPLESOCKET.H"
+
 #include "IntelliStrat.H"
 #include"BruteForce.H"
 #include "Random.H"
-#include "SIMPLESOCKET.H"
+
 
 
 using namespace std;
@@ -22,8 +24,7 @@ using namespace std;
 
 void restart(TCPclient c);
 
-//int intelliStrat(TCPclient c);
-//string shoot(int x , int y, TCPclient c);
+
 
 int main() {
 	srand(time(NULL));
@@ -139,11 +140,15 @@ int main() {
 
 
 
-
+//Ausgab fehlt noch
 
 void restart(TCPclient c){
-	c.sendData("RESTART    ");
-	if(c.receive(32).compare(0,9,"RESTARTED")==0) cout<< "neues Spiel!"<<endl;
+	string msg = "RESTART     ";
+	cout << "client sends:" << msg << endl;
+	c.sendData(msg);
+	msg = c.receive(32);
+
+	if(msg.compare(0,9,"RESTARTED")==0) cout<< "got response:" << msg<<endl;
 	else{ cout<< "ERROR beim erstellen eines neuen Spieles"<<endl;
 
 	}

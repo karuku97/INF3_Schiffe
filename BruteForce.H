@@ -23,7 +23,7 @@ int BruteForceDiagonal(TCPclient c){
 			 c.sendData(msg);
 			 moves++;
 			 msg = c.receive(32);
-			 if(msg.compare(0,9,"Game Over")==0)goto Part1;
+			 if(msg.compare(0,9,"Game Over")==0)return moves;
 			 cout << "got response:" << msg << endl;
 
 			 i=i-1;
@@ -45,7 +45,7 @@ int BruteForceDiagonal(TCPclient c){
 			c.sendData(msg);
 			moves++;
 			msg = c.receive(32);
-			if(msg.compare(0,9,"Game Over")==0)goto Part1;
+			if(msg.compare(0,9,"Game Over")==0)return moves;
 			cout << "got response:" << msg << endl;
 
 			i= i-1;
@@ -53,12 +53,12 @@ int BruteForceDiagonal(TCPclient c){
 		}
 
 	}
-	Part1:
+
 
 
 	return moves;
 }
-
+//Versuche alle Felder von Oben nach unten und links nach recht bis das Spiel zuende ist
 int BruteForce(TCPclient c){
 	stringstream ss;
 	string msg;
@@ -76,14 +76,12 @@ int BruteForce(TCPclient c){
 					msg = c.receive(32);
 					cout << "got response:" << msg << endl;
 
-					if(msg.compare(0,9,"Game Over")==0)goto Part1;
+					if(msg.compare(0,9,"Game Over")==0)return moves;
 
 					//sleep(1);
 				}
 			}
 		}
-
-		Part1:
-		//cout << "Moves: "<< moves <<endl;
 		return moves;
+
 }

@@ -1,17 +1,3 @@
-#include <string>
-#include <iostream>
-#include <unistd.h> //contains various constants
-#include <sstream>
-#include <vector>
-
-
-#include "SIMPLESOCKET.H"
-
-
-using namespace std;
-
-
-
 string shoot(int x, int y,TCPclient c){
 	stringstream ss;	//stringstream for Massage Protocoll
 	string msg;			// msg for return massage from server
