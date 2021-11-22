@@ -35,16 +35,15 @@ int main() {
 	c.conn(host , 2021);
 
 
-
-	//cout<<endl << "Moves: " <<intelliStratDiagonal(c)<<endl;
-
-
-	//cout<<"Moves: "<<BruteForceDiagonal(c)<<endl;;
-
-
-	int anz = 10;
+	int anz = 10; // anzahl der durchlaufe pro Stategie
+	vector<pair<string,double>> strategien;
+	pair<string,double> strat;
+	string stratName;
 	double movesAvg = 0.0;
 
+
+
+	//Bruteforce
 	for(int i = 0; i< anz;i++){
 		if(i==0){
 			movesAvg = BruteForce(c);
@@ -55,9 +54,84 @@ int main() {
 			restart(c);
 		}
 	}
+	strat.first = "BruteForce";
+	strat.second = movesAvg;
+	strategien.push_back(strat);
+
+	movesAvg = 0.0;
+	//BruteforceDiagonal
+	for(int i = 0; i< anz;i++){
+		if(i==0){
+			movesAvg = BruteForceDiagonal(c);
+			restart(c);
+		}
+		else{
+			movesAvg = (movesAvg+BruteForceDiagonal(c)) /2;
+			restart(c);
+		}
+	}
+	strat.first = "BruteForceDiagonal";
+	strat.second = movesAvg;
+	strategien.push_back(strat);
+
+	movesAvg = 0.0;
+	//Random
+	for(int i = 0; i< anz;i++){
+		if(i==0){
+			movesAvg = RandShoot(c);
+			restart(c);
+		}
+		else{
+			movesAvg = (movesAvg+RandShoot(c)) /2;
+			restart(c);
+		}
+	}
+	strat.first = "RandomShoot";
+	strat.second = movesAvg;
+	strategien.push_back(strat);
+
+	movesAvg = 0.0;
+	//IntelliStrat
+	for(int i = 0; i< anz;i++){
+		if(i==0){
+			movesAvg = IntelliStrat(c);
+			restart(c);
+		}
+		else{
+			movesAvg = (movesAvg+IntelliStrat(c)) /2;
+			restart(c);
+		}
+	}
+	strat.first = "IntelliStrat";
+	strat.second = movesAvg;
+	strategien.push_back(strat);
+
+	movesAvg = 0.0;
+	//IntelliStratDiagonal
+	for(int i = 0; i< anz;i++){
+		if(i==0){
+			movesAvg = IntelliStratDiagonal(c);
+			restart(c);
+		}
+		else{
+			movesAvg = (movesAvg+IntelliStratDiagonal(c)) /2;
+			restart(c);
+		}
+	}
+	strat.first = "IntelliStratDiagonal";
+	strat.second = movesAvg;
+	strategien.push_back(strat);
 
 
-	cout<<endl<< "----------"<<endl<< "AvarageMoves(BruteForce): "<< movesAvg<<endl<<"-----------"<<endl;
+
+	//Ausgabe der Strategien
+	cout<<endl<< "----------";
+	for(int i = 0 ; i< strategien.size();i++){
+		strat = strategien.at(i);
+		cout<<endl<< strat.first <<" : "<< strat.second<<endl;
+	}
+	cout<<endl<< "----------"<<endl;
+
 
 	c.sendData("BYEBYE");
 

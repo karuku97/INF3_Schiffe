@@ -192,7 +192,7 @@ string neigbour(int i , int j , int& moves, bool shot[10][10], TCPclient c){
 }
 
 //Inteligente Strategie (verlauf: Horizontal/Vertikal)
-int intelliStrat(TCPclient c){
+int IntelliStrat(TCPclient c){
 
 	string msg;
 	int moves=0; //counter fuer Schuesse
@@ -236,11 +236,11 @@ int intelliStrat(TCPclient c){
 
 		}
 	}
-
+	return moves;
 
 }
 //Inteligente Strategie (verlauf: jede zweite Diagonale)
-int intelliStratDiagonal(TCPclient c){
+int IntelliStratDiagonal(TCPclient c){
 		string msg; //Serverantworten
 		int moves=0;//counter fuer Schuesse
 		bool shot[10][10];	//Wahrheitswert Matrix mit bereitsgeschossenen Feldern
@@ -321,6 +321,6 @@ int intelliStratDiagonal(TCPclient c){
 			}
 
 		}
-
+		return moves;
 }
 
