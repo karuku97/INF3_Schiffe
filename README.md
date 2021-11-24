@@ -6,3 +6,4 @@ Project code by Maurice Mc Laughlin , Pascal Piel and Karl Kuckelsberg
 |  Coordinates(shoot) |  KORDS + X + {x-coordinate} + Y + {y-coordinate} + #  | Water, Ship_Hit,Ship_Destroyed,All_Ships_Destroyed,Game_Over|
 |  new Game | RESTART  | RESTARTED|
 |  end connection | BYEBYE  | BYEBYE |
+|  ERROR | "no valid command" | ERROR |
