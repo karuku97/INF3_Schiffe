@@ -5,3 +5,9 @@ Project code by Maurice Mc Laughlin , Pascal Piel and Karl Kuckelsberg
 - Coordinates(shoot) : KORDS + X + {x-coordinate} + Y + {y-coordinate} + # 
 - new Game : RESTART
 - end connection : BYEBYE
+
+| Server Client Protokoll  | |
+|---|---|---|---|---|
+|  Coordinates(shoot) |  KORDS + X + {x-coordinate} + Y + {y-coordinate} + #  | 
+|  new Game | RESTART  | 
+|  end connection | BYEBYE  |
