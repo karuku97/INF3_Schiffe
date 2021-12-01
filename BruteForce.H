@@ -23,7 +23,7 @@ int BruteForceDiagonal(TCPclient c){
 			 c.sendData(msg);
 			 moves++;
 			 msg = c.receive(32);
-			 if(msg.compare(0,9,"Game Over")==0)return moves;
+			 if(msg.compare(0,8,"GameOver")==0)return moves;
 			 cout << "got response:" << msg << endl;
 
 			 i=i-1;
@@ -45,7 +45,7 @@ int BruteForceDiagonal(TCPclient c){
 			c.sendData(msg);
 			moves++;
 			msg = c.receive(32);
-			if(msg.compare(0,9,"Game Over")==0)return moves;
+			if(msg.compare(0,8,"GameOver")==0)return moves;
 			cout << "got response:" << msg << endl;
 
 			i= i-1;
@@ -76,7 +76,7 @@ int BruteForce(TCPclient c){
 					msg = c.receive(32);
 					cout << "got response:" << msg << endl;
 
-					if(msg.compare(0,9,"Game Over")==0)return moves;
+					if(msg.compare(0,8,"GameOver")==0)return moves;
 
 					//sleep(1);
 				}

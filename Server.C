@@ -55,16 +55,16 @@ string myServer::myResponse(string input){
 					result =  "Water";
 					break;
 				case 1 :
-					result =  "Ship Hit";
+					result =  "ShipHit";
 					break;
 				case 2 :
-					result =  "Ship Destroyed";
+					result =  "ShipDestroyed";
 					break;
 				case 3 :
-					result =  "All Ships Destroyed";
+					result =  "AllShipsDestroyed";
 					break;
 				case 4 :
-					result =  "Game Over";
+					result =  "GameOver";
 					break;
 
 

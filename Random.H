@@ -15,7 +15,7 @@ int RandShoot(TCPclient c){
 		msg = c.receive(32);
 		cout << "got response:" << msg << endl;
 
-		if(msg.compare(0,9,"Game Over")==0)goto Part1;
+		if(msg.compare(0,8,"GameOver")==0)goto Part1;
 
 					//sleep(1);
 		}

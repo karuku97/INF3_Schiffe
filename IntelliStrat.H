@@ -69,18 +69,18 @@ string neigbour(int i , int j , int& moves, bool shot[10][10], TCPclient c){
 				shot[tmpj-1][tmpi-1] = true;
 
 				//Wenn koodinate getroffen dann zum Schiff hinzufuegen
-				if(msg.compare(0,8,"Ship Hit")==0){
+				if(msg.compare(0,7,"ShipHit")==0){
 					cords.first = tmpj-1;
 					cords.second = tmpi-1;
 					ship.push_back(cords);
 				}
 				//wenn schiff zerstört
-				if(msg.compare(0,14,"Ship Destroyed")==0)markShip(ship,shot);
+				if(msg.compare(0,13,"ShipDestroyed")==0)markShip(ship,shot);
 
 				//Debug
 				sleep(slep);
 			}
-		}while(msg.compare(0,8,"Ship Hit")==0);
+		}while(msg.compare(0,7,"ShipHit")==0);
 
 
 
@@ -99,18 +99,18 @@ string neigbour(int i , int j , int& moves, bool shot[10][10], TCPclient c){
 				shot[tmpj-1][tmpi-1] = true;
 
 				//Wenn koodinate getroffen dann zum Schiff hinzufuegen
-				if(msg.compare(0,8,"Ship Hit")==0){
+				if(msg.compare(0,7,"ShipHit")==0){
 					cords.first = tmpj-1;
 					cords.second = tmpi-1;
 					ship.push_back(cords);
 				}
 				//wenn schiff zerstört
-				if(msg.compare(0,14,"Ship Destroyed")==0)markShip(ship,shot);
+				if(msg.compare(0,13,"ShipDestroyed")==0)markShip(ship,shot);
 
 				//Debug
 				sleep(slep);
 			}
-		}while(msg.compare(0,8,"Ship Hit")==0);
+		}while(msg.compare(0,7,"ShipHit")==0);
 
 
 
@@ -128,19 +128,19 @@ string neigbour(int i , int j , int& moves, bool shot[10][10], TCPclient c){
 				shot[tmpj-1][tmpi-1] = true;
 
 				//Wenn koodinate getroffen dann zum Schiff hinzufuegen
-				if(msg.compare(0,8,"Ship Hit")==0){
+				if(msg.compare(0,7,"ShipHit")==0){
 					cords.first = tmpj-1;
 					cords.second = tmpi-1;
 					ship.push_back(cords);
 				}
 
 				//wenn schiff zerstört
-				if(msg.compare(0,14,"Ship Destroyed")==0)markShip(ship,shot);
+				if(msg.compare(0,13,"ShipDestroyed")==0)markShip(ship,shot);
 
 				//Debug
 				sleep(slep);
 			}
-		}while(msg.compare(0,8,"Ship Hit")==0);
+		}while(msg.compare(0,7,"ShipHit")==0);
 
 
 		tmpi = i;
@@ -157,19 +157,19 @@ string neigbour(int i , int j , int& moves, bool shot[10][10], TCPclient c){
 				shot[tmpj-1][tmpi-1] = true;
 
 				//Wenn koodinate getroffen dann zum Schiff hinzufuegen
-				if(msg.compare(0,8,"Ship Hit")==0){
+				if(msg.compare(0,7,"ShipHit")==0){
 					cords.first = tmpj-1;
 					cords.second = tmpi-1;
 					ship.push_back(cords);
 				}
 
 				//wenn schiff zerstört
-				if(msg.compare(0,14,"Ship Destroyed")==0)markShip(ship,shot);
+				if(msg.compare(0,13,"ShipDestroyed")==0)markShip(ship,shot);
 
 				//Debug
 				sleep(slep);
 			}
-		}while(msg.compare(0,8,"Ship Hit")==0);
+		}while(msg.compare(0,7,"ShipHit")==0);
 
 
 
@@ -207,12 +207,12 @@ int IntelliStrat(TCPclient c){
 				sleep(slep);
 
 				//Shiff zerstoeren wenn ein teffer Vorliegt
-				if(msg.compare(0,8,"Ship Hit")==0){
+				if(msg.compare(0,7,"ShipHit")==0){
 					neigbour(i,j,moves,shot,c);
 
 				}
 				//Wenn Game Over dann die derzeitige Anzahl der Schuesse zurueck geben
-				if(msg.compare(0,9,"Game Over")==0){return moves;}
+				if(msg.compare(0,8,"GameOver")==0){return moves;}
 
 				//sleep(slep);
 			}
@@ -262,11 +262,11 @@ int IntelliStratDiagonal(TCPclient c){
 
 
 					 //Schiff zerstoeren bei Treffer
-					 if(msg.compare(0,8,"Ship Hit")==0){
+					 if(msg.compare(0,7,"ShipHit")==0){
 						 msg = neigbour(i+1,j+1,moves,shot,c);
 					 }
 					 //Wenn Game Over gib die aktuelle Anzahl an Schuessen zurueck
-					 if(msg.compare(0,9,"Game Over")==0)return moves;
+					 if(msg.compare(0,8,"GameOver")==0)return moves;
 
 				 }
 				 //Laufparameter veraendern
@@ -292,11 +292,11 @@ int IntelliStratDiagonal(TCPclient c){
 					shot[j][i] = true;
 
 					//Schiff zerstoeren bei Treffer
-					if(msg.compare(0,8,"Ship Hit")==0){
+					if(msg.compare(0,7,"ShipHit")==0){
 						msg = neigbour(i+1,j+1,moves,shot,c);
 					}
 					//Wenn Game Over gib die aktuelle Anzahl an Schuessen zurueck
-					if(msg.compare(0,9,"Game Over")==0){return moves;}
+					if(msg.compare(0,8,"GameOver")==0){return moves;}
 				}
 				//Laufparameter veraendern
 				i= i-1;
