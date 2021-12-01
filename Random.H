@@ -52,6 +52,7 @@ int RandShootiS(TCPclient c){
 
 
 	while(1){
+
 		int x = (rand()%10)+1;
 		int y = (rand()%10)+1;
 
@@ -62,7 +63,7 @@ int RandShootiS(TCPclient c){
 		cout << "client sends:" << msg << endl;
 		c.sendData(msg);
 		brain[x][y] = true;// setzt beschossenes Feld auf "true"
-		}
+		}else{break;}
 
 		moves++;
 		msg = c.receive(32);
