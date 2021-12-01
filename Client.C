@@ -91,6 +91,22 @@ int main() {
 	strat.second = movesAvg;
 	strategien.push_back(strat);
 
+	//RandomShootiS
+		for(int i = 0; i< anz;i++){
+			if(i==0){
+				movesAvg = RandShootiS(c);
+				restart(c);
+			}
+			else{
+				movesAvg = (movesAvg+RandShootiS(c)) /2;
+				restart(c);
+			}
+		}
+		strat.first = "RandomShootiS";
+		strat.second = movesAvg;
+		strategien.push_back(strat);
+
+
 	movesAvg = 0.0;
 	//IntelliStrat
 	for(int i = 0; i< anz;i++){
