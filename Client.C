@@ -26,8 +26,15 @@ void restart(TCPclient c);
 
 
 
-int main() {
+int main(int argc, const char **argv) {
+
 	srand(time(NULL));
+
+	int anz; // anzahl der durchlaufe pro Stategie
+	sscanf(argv[1],"%i",&anz);
+	printf("Parameter : %d",anz);
+
+
 	TCPclient c;
 	string host = "localhost";
 
@@ -36,7 +43,7 @@ int main() {
 	c.conn(host , 2021);
 
 
-	int anz = 10; // anzahl der durchlaufe pro Stategie
+
 	vector<pair<string,double>> strategien;
 	pair<string,double> strat;
 	string stratName;
@@ -142,12 +149,14 @@ int main() {
 
 
 	//Ausgabe der Strategien
-	cout<<endl<< "----------";
+	cout<<endl<< "----------------"<<endl;
+	cout<< "Durchlaeufe pro Strategie: "<<anz<<endl;
+	cout<<endl<< "----------"<<endl;
 	for(int i = 0 ; i< strategien.size();i++){
 		strat = strategien.at(i);
 		cout<<endl<< strat.first <<" : "<< strat.second<<endl;
 	}
-	cout<<endl<< "----------"<<endl;
+	cout<<endl<< "----------------"<<endl;
 
 
 	c.sendData("BYEBYE");
