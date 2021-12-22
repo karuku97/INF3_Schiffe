@@ -1,41 +1,118 @@
+/*
+ * StrategienM.C
+ *
+ *  Created on: 22.12.2021
+ *      Author: pascalpiel
+ */
+
 
 #include <string>
-#include "StrategienM.C"
 
 
 enum Feldstatus { NICHT_BESCHOSSEN = 0,
-	              WASSER = 1 , 
+	              WASSER = 1 ,
 	              SHIFF_GETROFFEN = 2,
 	              SHIFF_ZERSTOERT = 3
 };
 
 
 
-string shootPos(int x, int y,TCPclient c);
+string shootPos(int x, int y,TCPclient c){
+	stringstream ss;	//stringstream for Massage Protocoll
+	string msg;			// msg for return massage from server
 
-
-
-class SpielfeldVerwaltung{
+	ss.str("");
+	ss<<"KORDSX"<<( x) << "Y" <<( y)<<"#";
+	msg = ss.str();
+	cout << "client sends:" << msg << endl;
+	c.sendData(msg);
+	msg = c.receive(32);
+	cout << "got response:" << msg << endl;
+	return msg;
+ }
+ class SpielfeldVerwaltung{
 
  protected:
 
 	Feldstatus Spielfeld [100] = {NICHT_BESCHOSSEN};
 
 	int lastPos;
-	
-	
+
+
 	public:
 
-	int getFeldstatus(int n);
+	int getFeldstatus(int n){
+
+	return Spielfeld[n];
+
+	}
 
 	//SpielfeldVerwaltung::SpielfeldVerwaltung (){};
 
 
-		void Statusreport(int x, int y, string m); 	// speichert ob getroffen wurde oder nicht auf dem Array Spielfeld.
+		void Statusreport(int x, int y, string m){
 
-	Feldstatus ServerStringToEnum (string msg);
-		
-	int searchShipclass ();
+		int pos = (y*10)+x;
+		lastPos = pos;
+
+
+			Spielfeld[pos] = ServerStringToEnum(m);
+
+
+	 } 	// speichert ob getroffen wurde oder nicht auf dem Array Spielfeld.
+
+	Feldstatus ServerStringToEnum (string msg){
+
+        if (msg.compare("ShipDestroyed") == 0){
+
+			return SHIFF_ZERSTOERT;
+
+		}
+
+		 if (msg.compare("Water") == 0){
+
+			return WASSER;
+
+		}
+
+		 if (msg.compare("ShipHit") == 0){
+
+			return SHIFF_GETROFFEN;
+
+		}
+		//Switch case draus machen
+	}
+
+	int searchShipclass (){
+
+
+		int fuenfer = 1;
+		int vierer = 2;
+		int dreier = 3;
+		int zweier = 4;
+
+		if (fuenfer !=0 ){
+
+			return 5;
+		}
+
+		if (vierer !=0 ){
+
+			return 4;
+		}
+
+		if (dreier !=0 ){
+
+			return 3;
+		}
+
+		if (zweier !=0 ){
+
+			return 2;
+		}
+
+		return -1;
+ 	}
  };
 
  struct Quadrantenparameter
@@ -51,7 +128,26 @@ class SpielfeldVerwaltung{
 	Q3 = {0, 4, 5, 9},
 	Q4 = {5, 9, 5, 9};
 
-Quadrantenparameter getQuadrant(int id);
+Quadrantenparameter getQuadrant(int id){
+	switch(id){
+		case 1:
+			return Q1;
+		break;
+		case 2:
+			return Q2;
+		break;
+		case 3:
+			return Q3;
+		break;
+		case 4:
+			return Q4;
+		break;
+
+		default:
+		return Q1;
+	}
+
+}
 
 
 
@@ -87,7 +183,7 @@ Quadrantenparameter getQuadrant(int id);
 // 				//auf Koordinate schießen
 // 				msg = shoot(tmpi,tmpj,c);
 // 				moves++;
-				
+
 // 				nextdoor.Statusreport(i, j, msg);
 
 // 				//Wenn koodinate getroffen dann zum Schiff hinzufuegen
@@ -199,8 +295,134 @@ Quadrantenparameter getQuadrant(int id);
 // 	return msg;
 // }
 
- int geteilteSuche (TCPclient c);
+ int geteilteSuche (TCPclient c){
 
-int Schiffsuche (TCPclient c);
+
+	SpielfeldVerwaltung field;
+
+	 string msg; //Serverantworten
+	 int moves=0;//counter fuer Schuesse
+
+
+		int x;
+		int y;
+
+
+		int quadrant = 1;
+		Quadrantenparameter q = getQuadrant(quadrant);
+
+		while (msg.compare("GameOver")!=0){
+
+
+
+
+			for (y=q.ymin; y <= q.ymax; x++){// For Schleife raus und durch if ersezten, while schleife alleine reicht
+
+			 x = q.Xmin;
+
+
+
+			//Wenn noch nicht auf das Feld geschossen
+				 if(field.getFeldstatus((y*10)+x)==0){
+					 //schiesse auf das Feld
+					 msg = shootPos(x,y,c);
+					 moves++;
+
+					 field.Statusreport(x, y, msg);
+
+
+					//  //Schiff zerstoeren bei Treffer
+					//  if(msg.compare(0,7,"ShipHit")==0){
+					// 	 msg = checkNeigbour(x,y,moves,shot,c);
+					//  }
+					//Wenn Game Over gib die aktuelle Anzahl an Schuessen zurueck
+					 //if(msg.compare(0,8,"GameOver")==0)return moves;
+
+				 }
+				 //Laufparameter veraendern
+				 if (x == 5){
+
+				 x=0;
+				 y+=1;
+		         }
+
+
+
+
+			quadrant++;
+			q = getQuadrant(quadrant);
+
+		}
+
+
+
+ }
+	return moves;
+ }
+
+
+
+
+
+
+
+
+int Schiffsuche (TCPclient c){
+
+	SpielfeldVerwaltung Feld;
+
+ string msg; //Serverantworten
+	 int moves=0;//counter fuer Schuesse
+
+
+		int x = 0;
+		int y = 0;
+
+		int Schifftyp = Feld.searchShipclass();
+
+		while (msg.compare("GameOver")!=0){
+
+			for (x;y<=9;x+=Schifftyp){// For Schleife raus und durch if ersezten, while schleife alleine reicht
+
+				if (x > 9){
+
+				 x=0;
+				 y+=1;
+		         }
+
+				//Wenn noch nicht auf das Feld geschossen
+				 //if(Feld.getFeldstatus((y*10)+x)==0){
+					 //schiesse auf das Feld
+					 msg = shootPos(x,y,c);
+					 moves++;
+
+					 Feld.Statusreport(x, y, msg);
+
+
+					//  //Schiff zerstoeren bei Treffer
+					//  if(msg.compare(0,7,"ShipHit")==0){
+					// 	 msg = checkNeigbour(x,y,moves,shot,c);
+					//  }
+					//  //Wenn Game Over gib die aktuelle Anzahl an Schuessen zurueck
+					//  if(msg.compare(0,8,"GameOver")==0)return moves;
+
+				 //}
+				 //Laufparameter veraendern
+
+				 // Wenn  Schiff eines Typen zerstört worden ist, speicherung in Varibale und erneute Abfrage nach Schifftyp
+
+
+
+			}
+
+
+		}
+
+
+
+	return moves;
+
+ }
+
 
 
