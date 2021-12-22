@@ -1,5 +1,5 @@
-#ifndef STRATEGIENM_H
-#define STRATEGIENM_H
+#ifndef BRUTEFORCEDIAGONAL_H
+#define BRUTEFORCEDIAGONAL_H
 
 #include <string>
 #include <iostream>
@@ -9,13 +9,6 @@
 
 #include "SIMPLESOCKET.H"
 
+int BruteForceDiagonal(TCPclient c);
 
-int geteilteSuche (TCPclient c);
-int Schiffsuche (TCPclient c);
-
-#endif /* STRATEGIENM_H*/
-
-
- 
-
-
+#endif /* BRUTEFORCEDIAGONAL_H */
