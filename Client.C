@@ -31,32 +31,31 @@ int main(int argc, const char **argv) {
 
 	int anz; // anzahl der durchlaufe pro Stategie
 	sscanf(argv[1],"%i",&anz);
-	printf("Parameter : %d ",anz);
-	printf("\n");
+	//printf("Parameter : %d ",anz);
+	//printf("\n");
 
 	int meth;
 	sscanf(argv[2],"%i",&meth);
-	printf("Strategienummer: %d \n", meth);
-
-
-	cout << "strategy: ";
-	switch(meth){
-				case 0: printf("BRUTEFORCE");break;
-				case 1: printf("BRUTEFORCEDIAGONAL");break;
-				case 2: printf("RANDSHOOT");break;
-				case 3: printf("RANDSHOOTIS");break;
-				case 4: printf("INTELLISTRAT");break;
-				case 5: printf("INTELLISTRATDIAGONAL");break;
-				default: printf("Die Strategie existiert nicht.\n");break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
-				}
-
-	 cout << endl;
+	//printf("Strategienummer: %d \n", meth);
 
 	TCPclient c;
 	string host = "localhost";
 
 	//connect to host
 	c.conn(host , 2021);
+
+	cout << "strategy: ";
+		switch(meth){
+					case 0: printf("BRUTEFORCE");break;
+					case 1: printf("BRUTEFORCEDIAGONAL");break;
+					case 2: printf("RANDSHOOT");break;
+					case 3: printf("RANDSHOOTIS");break;
+					case 4: printf("INTELLISTRAT");break;
+					case 5: printf("INTELLISTRATDIAGONAL");break;
+					default: printf("Die Strategie existiert nicht.\n");break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
+					}
+
+		 cout << endl;
 
 	int moves;
 
