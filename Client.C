@@ -27,6 +27,18 @@ void restart(TCPclient c);
 
 int main(int argc, const char **argv) {
 
+	if (argc != 3){
+
+		char a;
+		cout<<"Input not correct"<< endl;
+		cout<<"Input are two numbers"<< endl;
+		cout<<"The first number states how often the strategy should be repeated, you can choose any unsigned integer"<<endl;
+		cout<<"The second number is for a strategy 0: BRUTEFORCE, 1: BRUTEFORCEDIAGONAL, 2: RANDSHOOT, 3: RANDSHOOTIS, 4: INTELLISTRAT, 5: INTELLISTRATDIAGONAL,"<<endl;
+		cout<<"For example: ./Client 15 4"<< endl;
+		exit (-1);
+
+	}
+
 	srand(time(NULL));
 
 	int anz; // anzahl der durchlaufe pro Stategie
@@ -74,131 +86,7 @@ int main(int argc, const char **argv) {
 	restart(c);
 	}
 
-/*
-	int anz; // anzahl der durchlaufe pro Stategie
-	sscanf(argv[1],"%i",&anz);
-	printf("Parameter : %d",anz);
-*/
 
-
-
-/*
-	vector<pair<string,double>> strategien;
-	pair<string,double> strat;
-	string stratName;
-	double movesAvg = 0.0;
-	*/
-
-/*
-
-	//Bruteforce
-	for(int i = 0; i< anz;i++){
-		if(i==0){
-			movesAvg = BruteForce(c);
-			restart(c);
-		}
-		else{
-			movesAvg = (movesAvg+BruteForce(c)) /2;
-			restart(c);
-		}
-	}
-	strat.first = "BruteForce";
-	strat.second = movesAvg;
-	strategien.push_back(strat);
-
-	movesAvg = 0.0;
-	//BruteforceDiagonal
-	for(int i = 0; i< anz;i++){
-		if(i==0){
-			movesAvg = BruteForceDiagonal(c);
-			restart(c);
-		}
-		else{
-			movesAvg = (movesAvg+BruteForceDiagonal(c)) /2;
-			restart(c);
-		}
-	}
-	strat.first = "BruteForceDiagonal";
-	strat.second = movesAvg;
-	strategien.push_back(strat);
-
-	movesAvg = 0.0;
-	//Random
-	for(int i = 0; i< anz;i++){
-		if(i==0){
-			movesAvg = RandShoot(c);
-			restart(c);
-		}
-		else{
-			movesAvg = (movesAvg+RandShoot(c)) /2;
-			restart(c);
-		}
-	}
-	strat.first = "RandomShoot";
-	strat.second = movesAvg;
-	strategien.push_back(strat);
-
-	//RandomShootiS
-		for(int i = 0; i< anz;i++){
-			if(i==0){
-				movesAvg = RandShootiS(c);
-				restart(c);
-			}
-			else{
-				movesAvg = (movesAvg+RandShootiS(c)) /2;
-				restart(c);
-			}
-		}
-		strat.first = "RandomShootiS";
-		strat.second = movesAvg;
-		strategien.push_back(strat);
-
-
-	movesAvg = 0.0;
-	//IntelliStrat
-	for(int i = 0; i< anz;i++){
-		if(i==0){
-			movesAvg = IntelliStrat(c);
-			restart(c);
-		}
-		else{
-			movesAvg = (movesAvg+IntelliStrat(c)) /2;
-			restart(c);
-		}
-	}
-	strat.first = "IntelliStrat";
-	strat.second = movesAvg;
-	strategien.push_back(strat);
-
-	movesAvg = 0.0;
-	//IntelliStratDiagonal
-	for(int i = 0; i< anz;i++){
-		if(i==0){
-			movesAvg = IntelliStratDiagonal(c);
-			restart(c);
-		}
-		else{
-			movesAvg = (movesAvg+IntelliStratDiagonal(c)) /2;
-			restart(c);
-		}
-	}
-	strat.first = "IntelliStratDiagonal";
-	strat.second = movesAvg;
-	strategien.push_back(strat);
-
-
-
-	//Ausgabe der Strategien
-	cout<<endl<< "----------------"<<endl;
-	cout<< "Durchlaeufe pro Strategie: "<<anz<<endl;
-	cout<<endl<< "----------"<<endl;
-	for(int i = 0 ; i< strategien.size();i++){
-		strat = strategien.at(i);
-		cout<<endl<< strat.first <<" : "<< strat.second<<endl;
-	}
-	cout<<endl<< "----------------"<<endl;
-
-*/
 	c.sendData("BYEBYE");
 
 }
@@ -207,15 +95,5 @@ int main(int argc, const char **argv) {
 
 //Ausgab fehlt noch
 
-void restart(TCPclient c){
-	string msg = "RESTART     ";
-	// cout << "client sends:" << msg << endl;
-	c.sendData(msg);
-	msg = c.receive(32);
-
-	if(msg.compare(0,9,"RESTARTED")==0); // cout<< "got response:" << msg<<endl;
-	else{ cout<< "ERROR beim erstellen eines neuen Spieles"<<endl;
-	}
-}
 
 
