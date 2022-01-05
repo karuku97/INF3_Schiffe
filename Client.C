@@ -6,24 +6,7 @@
  */
 
 #include"Client.H"
-#include <string>
-#include <iostream>
-#include <unistd.h> //contains various constants
-#include <sstream>
-#include <vector>
 
-#include "SIMPLESOCKET.H"
-
-#include "IntelliStrat.H"
-#include "BruteForce.H"
-#include "Random.H"
-
-
-
-using namespace std;
-
-
-void restart(TCPclient c);
 
 
 int main(int argc, const char **argv) {
@@ -57,15 +40,16 @@ int main(int argc, const char **argv) {
 	//connect to host
 	c.conn(host , 2021);
 
-	cout << "strategy: ";
+	string i = "strategy: ";
+
 		switch(meth){
-					case 0: printf("BRUTEFORCE");break;
-					case 1: printf("BRUTEFORCEDIAGONAL");break;
-					case 2: printf("RANDSHOOT");break;
-					case 3: printf("RANDSHOOTIS");break;
-					case 4: printf("INTELLISTRAT");break;
-					case 5: printf("INTELLISTRATDIAGONAL");break;
-					default: printf("Die Strategie existiert nicht.\n");break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
+					case 0: cout << i << "BRUTEFORCE";break;
+					case 1: cout << i << "BRUTEFORCEDIAGONAL";break;
+					case 2: cout << i << "RANDSHOOT";break;
+					case 3: cout << i << "RANDSHOOTIS";break;
+					case 4: cout << i << "INTELLISTRAT";break;
+					case 5: cout << i << "INTELLISTRATDIAGONAL";break;
+					default: cout << "Die Strategie existiert nicht.\n";exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
 					}
 
 		 cout << endl;
@@ -74,16 +58,15 @@ int main(int argc, const char **argv) {
 
 	for(int i=0; i<anz; i++){
 		switch(meth){
-			case 0: moves = BruteForce(c);break;
-			case 1: moves = BruteForceDiagonal(c);break;
-			case 2: moves = RandShoot(c);break;
-			case 3: moves = RandShootiS(c);break;
-			case 4: moves = IntelliStrat(c);break;
-			case 5: moves = IntelliStratDiagonal(c);break;
-			default: printf("Die Strategie existiert nicht.\n");break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
+			case 0: cout << BruteForce(c) << endl;break;
+			case 1: cout << BruteForceDiagonal(c)<< endl;break;
+			case 2: cout << RandShoot(c)<< endl;break;
+			case 3: cout << RandShootiS(c)<< endl;break;
+			case 4: cout << IntelliStrat(c)<< endl;break;
+			case 5: cout << IntelliStratDiagonal(c)<< endl;break;
+			default: cout << "Die Strategie existiert nicht.\n";break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
 			}
-	cout << moves << endl;
-	moves = 0;
+
 	restart(c);
 	}
 
@@ -103,9 +86,4 @@ void restart(TCPclient c){
 	}
 }
 
-
-
 //Ausgab fehlt noch
-
-
-
