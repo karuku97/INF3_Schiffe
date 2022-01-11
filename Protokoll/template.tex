@@ -1,0 +1,28 @@
+\documentclass[12pt, a4paper]{scrartcl}
+    \usepackage[utf8]{inputenc}    %Ermöglicht die Verwendung von Umlauten etc. im Text.
+    \usepackage[ngerman]{babel}		%Deutsches Sprachpaket
+    \usepackage[T1]{fontenc}		%Stellt sicher, dass in einem PDF Umlaute gefunden werden.
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{latexsym} %for \rhd
+    \usepackage{graphicx} %to include images
+    \usepackage[table]{xcolor}    % loads also »colortbl«
+    \usepackage{tikz}
+    \usepackage{float}
+\graphicspath{ {../images/} }
+
+    %\usepackage[page]{totalcount}
+    \usepackage[headsepline]{scrlayer-scrpage}%scrlayer-scrpage
+    \clearpairofpagestyles
+    \chead{\HeaderC\\
+    Karl Ruben Kuckelsberg (Matrikelnummer)\\
+    Pascal Piel (Matrikelnummer)\\
+    Maurice Mc Laughlin (1205943)
+    }
+    
+    \cfoot{Seite \thepage}
+    \setlength{\headheight}{40pt}
+    \setlength{\footheight}{14.5pt}
+
+
+\newcommand{\HeaderC}{\textbf{Informatik 3 Praktikum Protokoll}}
