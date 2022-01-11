@@ -7,7 +7,9 @@
 
 
 #include <string>
+#include "StrategienM.H"
 
+// Testkommentar
 
 enum Feldstatus { NICHT_BESCHOSSEN = 0,
 	              WASSER = 1 ,

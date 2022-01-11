@@ -1,6 +1,6 @@
 
 #include <string>
-#include "StrategienM.C"
+
 
 
 enum Feldstatus { NICHT_BESCHOSSEN = 0,
