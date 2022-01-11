@@ -5,9 +5,20 @@
  *      Author: aml
  */
 
-#include"Client.H"
+// #include <string>
+// #include <iostream>
+// #include <unistd.h> //contains various constants
+// #include <sstream>
+// #include <vector>
 
+#include "SIMPLESOCKET.H"
 
+#include "IntelliStrat.H"
+#include "BruteForce.H"
+#include "Random.H"
+#include "SpielFeldverwaltung.H"
+
+using namespace std;
 
 int main(int argc, const char **argv) {
 
@@ -75,15 +86,15 @@ int main(int argc, const char **argv) {
 
 }
 
-void restart(TCPclient c){
-	string msg = "RESTART     ";
-	// cout << "client sends:" << msg << endl;
-	c.sendData(msg);
-	msg = c.receive(32);
+// void restart(TCPclient c){
+// 	string msg = "RESTART     ";
+// 	// cout << "client sends:" << msg << endl;
+// 	c.sendData(msg);
+// 	msg = c.receive(32);
 
-	if(msg.compare(0,9,"RESTARTED")==0); // cout<< "got response:" << msg<<endl;
-	else{ cout<< "ERROR beim erstellen eines neuen Spieles"<<endl;
-	}
-}
+// 	if(msg.compare(0,9,"RESTARTED")==0); // cout<< "got response:" << msg<<endl;
+// 	else{ cout<< "ERROR beim erstellen eines neuen Spieles"<<endl;
+// 	}
+// }
 
 //Ausgab fehlt noch
