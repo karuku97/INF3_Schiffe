@@ -1,13 +1,15 @@
 /*
- * Random
- *
- *  Created on: 22.12.2021
- *      Author: pascalpiel
- */
-/*
  *  created on: 01.12.2021
  *      Author: pascalpiel
  */
+
+/**
+ *
+ * \file Random.C
+ *
+ * \brief contains two strategies, working with the rand()-function. They are contained as functions.
+ */
+
 
 int RandShoot(TCPclient c){
 	stringstream ss;
@@ -84,7 +86,3 @@ int RandShootiS(TCPclient c){
 		//cout << "Moves: "<< moves <<endl;
 		return moves;
 }
-
-
-
-
