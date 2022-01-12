@@ -1,4 +1,9 @@
-#include "IntelliStrat.C"
+#include <string>
+ #include <iostream>
+ #include <unistd.h> //contains various constants
+ #include <sstream>
+ #include <vector>
+#include "SIMPLESOCKET.H"
 
 
 

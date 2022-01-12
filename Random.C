@@ -10,6 +10,7 @@
  * \brief contains two strategies, working with the rand()-function. They are contained as functions.
  */
 
+#include "Random.H"
 
 int RandShoot(TCPclient c){
 	stringstream ss;

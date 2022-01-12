@@ -1,5 +1,9 @@
-
-# include "BruteForce.C"
+#include <string>
+ #include <iostream>
+ #include <unistd.h> //contains various constants
+ #include <sstream>
+ #include <vector>
+#include "SIMPLESOCKET.H"
 
 int BruteForceDiagonal(TCPclient c);
 //Versuche alle Felder von Oben nach unten und links nach recht bis das Spiel zuende ist

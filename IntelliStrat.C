@@ -4,6 +4,7 @@
  *  Created on: 22.12.2021
  *      Author: pascalpiel
  */
+#include "IntelliStrat.H"
 
 string shoot(int x, int y,TCPclient c){
 	stringstream ss;	//stringstream for Massage Protocoll

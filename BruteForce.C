@@ -4,6 +4,7 @@
  *  Created on: 22.12.2021
  *      Author: pascalpiel
  */
+#include "BruteForce.H"
 
 int BruteForceDiagonal(TCPclient c){
 	stringstream ss;

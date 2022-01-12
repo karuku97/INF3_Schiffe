@@ -10,7 +10,12 @@
  * \brief contains the declarations of the two random strategies.
  */
 
-#include "Random.C"
+#include <string>
+ #include <iostream>
+ #include <unistd.h> //contains various constants
+ #include <sstream>
+ #include <vector>
+#include "SIMPLESOCKET.H"
 
 
  /**

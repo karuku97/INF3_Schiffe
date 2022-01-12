@@ -3,13 +3,21 @@ CC=g++
 CFLAGS=$(shell pkg-config --cflags opencv) 
 LIBS=$(shell pkg-config --libs opencv) 
 
-OBJS= main.o   TASK3.o  SIMPLESOCKET.o 
+OBJS= main.o   TASK3.o  SIMPLESOCKET.o Random.o IntelliStrat.o BruteForce.o
 DEMOTARGET=main Server Client
 
 
 SIMPLESOCKET.o:	SIMPLESOCKET.C
 	$(CC) -c $<  -std=c++11
 
+Random.o:	Random.C
+	$(CC) -c $<  -std=c++11
+	
+IntelliStrat.o:	IntelliStrat.C
+	$(CC) -c $<  -std=c++11
+	
+BruteForce.o:	BruteForce.C
+	$(CC) -c $<  -std=c++11
 
 
 TASK3.o:	TASK3.C
@@ -39,7 +47,7 @@ Server:	Server.o
 	$(CC) -o Server Server.o  SIMPLESOCKET.o TASK3.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
 
 Client:	Client.o
-	$(CC) -o Client Client.o SIMPLESOCKET.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
+	$(CC) -o Client Client.o SIMPLESOCKET.o BruteForce.o IntelliStrat.o Random.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
 
 
 clean:
