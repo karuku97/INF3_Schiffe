@@ -7,7 +7,7 @@
  *
  * \file Random.H
  *
- * \brief contains the declarations of the two random strategies. test
+ * \brief contains the declarations of the two random strategies.
  */
 
 #include "Random.C"
