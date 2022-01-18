@@ -47,10 +47,11 @@
 			}
 
 
-
+			if (field.getFieldstatus(x , y)==0){
 
 			field.Statusreport(x,y,shootPos(x,y,c));
 			moves++;
+			}
 
 			if (field.getLastFieldStatus()==2){
 

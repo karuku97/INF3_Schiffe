@@ -2,7 +2,7 @@
 #include "SpielFeldverwaltung.H"
 
 
-
+using namespace std;
 
 void restart(TCPclient c){
  	string msg = "RESTART     ";
@@ -31,20 +31,8 @@ string shootPos(int x, int y, TCPclient c)
         return msg;
     }
 
-        // Feldstatus Spielfeld[100] = {NICHT_BESCHOSSEN};
-
-        // int lastX;
-        // int lastY;
-        // int lastPos;
-        
-        // int SpielfeldVerwaltung::coordsToPosition(int x, int y){
-        //         return ((y-1) * 10) + x-1;
-            
-        //     }
-    
        
-
-        int SpielfeldVerwaltung::PositionToCoordsX(int n){
+        int SpielfeldVerwaltung::SpielfeldPositionToCoordsX(int n){
             
             int y = n/10;
 
@@ -55,7 +43,27 @@ string shootPos(int x, int y, TCPclient c)
 
         }
 
-        int SpielfeldVerwaltung::PositionToCoordsY(int n){
+        int SpielfeldVerwaltung::SpielfeldPositionToCoordsY(int n){
+            
+            int y = n/10;
+            
+            return y;
+
+
+        }
+
+        int SpielfeldVerwaltung::SchiffePositionToCoordsX(int n){
+            
+            int y = n/10;
+
+            int x = n-(y*10);
+            
+            return x;
+
+
+        }
+
+        int SpielfeldVerwaltung::SchiffePositionToCoordsY(int n){
             
             int y = n/10;
             
@@ -88,6 +96,16 @@ string shootPos(int x, int y, TCPclient c)
             Spielfeld[lastPos] = ServerStringToEnum(m);
 
         } // speichert ob getroffen wurde oder nicht auf dem Array Spielfeld.
+
+        void SpielfeldVerwaltung::SchiffPosition(int x, int y, string m)
+        {
+
+            lastPos = coordsToPosition(x,y);
+            
+
+            Schiffe[lastPos] = ServerStringToEnum(m);
+
+        }
 
         Feldstatus SpielfeldVerwaltung::ServerStringToEnum(string msg)
         {
@@ -195,6 +213,16 @@ Feldstatus shootline(int tmpX, int tmpY, int Rx, int Ry, int& moves, TCPclient c
  
 
     do{
+
+        // if (Feld.getFieldstatus(tmpX, tmpY)==2){
+
+        //     Feld.SchiffPosition(tmpX, tmpY, "ShipHit");
+        // }
+
+        // if (Feld.getFieldstatus(tmpX, tmpY)==3 ){
+
+        //     Feld.SchiffPosition(tmpX, tmpY, "Destroyed");
+        // }
 
         tmpX+=Rx;
         tmpY+=Ry;

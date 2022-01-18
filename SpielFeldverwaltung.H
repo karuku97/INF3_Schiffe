@@ -6,26 +6,14 @@
 #include <unistd.h> //contains various constants
 #include <sstream>
 #include <vector>
+#include <algorithm>
+#include <array>
 
 #include "SIMPLESOCKET.H"
 
-using namespace std;
 
-// void restart(TCPclient c)
-// {
-//     string msg = "RESTART     ";
-//     // cout << "client sends:" << msg << endl;
-//     c.sendData(msg);
-//     msg = c.receive(32);
 
-//     if (msg.compare(0, 9, "RESTARTED") == 0)
-//         ; // cout<< "got response:" << msg<<endl;
-//     else
-//     {
-//         cout << "ERROR beim erstellen eines neuen Spieles" << endl;
-//     }
-
-// }
+void restart(TCPclient c);
 
     enum Feldstatus
     {
@@ -47,6 +35,8 @@ using namespace std;
     protected:
         Feldstatus Spielfeld[100] = {NICHT_BESCHOSSEN};
 
+        Feldstatus Schiffe[5] = {NICHT_BESCHOSSEN};
+
         int lastX;
         int lastY;
         int lastPos;
@@ -56,12 +46,26 @@ using namespace std;
                 return ((y-1) * 10) + x-1;
             
             }
+
+        // Feldstatus SortSchiffe(Feldstatus *Schiffe){
+
+        //         std::sort(Schiffe, Schiffe + sizeof Schiffe / sizeof Schiffe[0]);
+
+        //         return Schiffe;
+
+        // }
     public:
 
-        int PositionToCoordsX(int n);
+        int SpielfeldPositionToCoordsX(int n);
 
 
-        int PositionToCoordsY(int n);
+        int SpielfeldPositionToCoordsY(int n);
+
+
+        int SchiffePositionToCoordsX(int n);
+
+
+        int SchiffePositionToCoordsY(int n);
 
 
         int getFieldstatus(int x, int y);
@@ -71,6 +75,8 @@ using namespace std;
 
 
         void Statusreport(int x, int y, string m);
+
+        void SchiffPosition(int x, int y, string m);
 
         Feldstatus ServerStringToEnum(string msg);
 
