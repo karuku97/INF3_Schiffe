@@ -12,7 +12,7 @@
  #include <vector>
 
 #include "SIMPLESOCKET.H"
-
+#include "SpielFeldverwaltung.H"
 #include "IntelliStrat.H"
 #include "BruteForce.H"
 #include "Random.H"
@@ -91,15 +91,5 @@ int main(int argc, const char **argv) {
 
 }
 
- void restart(TCPclient c){
- 	string msg = "RESTART     ";
- 	// cout << "client sends:" << msg << endl;
- 	c.sendData(msg);
- 	msg = c.receive(32);
-
- 	if(msg.compare(0,9,"RESTARTED")==0); // cout<< "got response:" << msg<<endl;
- 	else{ cout<< "ERROR beim erstellen eines neuen Spieles"<<endl;
- 	}
- }
 
 //Ausgab fehlt noch
