@@ -1,3 +1,6 @@
+#ifndef STRATEGIENM_H
+#define STRATEGIENM_H
+
 #include <string>
 #include <iostream>
 #include <unistd.h> //contains various constants
@@ -14,4 +17,4 @@ using namespace std;
 
 int Schiffsuche (TCPclient c);
 
-
+#endif /* STRATEGIENM_H*/

@@ -1,3 +1,7 @@
+#ifndef SERVER_H
+#define SERVER_H
+
+
 #include "SIMPLESOCKET.H"
 #include <string>
 #include "TASK3.H"
@@ -23,3 +27,5 @@ private:
 
 
 };
+
+#endif /* SERVER_H */

@@ -1,3 +1,7 @@
+#ifndef INTELLISTRAT_H
+#define INTELLISTRAT_H
+
+
 #include <string>
  #include <iostream>
  #include <unistd.h> //contains various constants
@@ -24,3 +28,4 @@ int IntelliStrat(TCPclient c);
 //Inteligente Strategie (verlauf: jede zweite Diagonale)
 int IntelliStratDiagonal(TCPclient c);
 
+#endif /*   INTELLISTRAT_H*/

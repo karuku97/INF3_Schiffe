@@ -10,6 +10,9 @@
  * \brief contains the declarations of the two random strategies.
  */
 
+#ifndef RANDOM_H
+#define RANDOM_H
+
 #include <string>
  #include <iostream>
  #include <unistd.h> //contains various constants
@@ -39,3 +42,5 @@ int RandShoot(TCPclient c);
  *
  */
 int RandShootiS(TCPclient c);
+
+#endif /* RANDOM_H */
