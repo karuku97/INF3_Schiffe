@@ -16,6 +16,7 @@
 #include "IntelliStrat.H"
 #include "BruteForce.H"
 #include "Random.H"
+#include "StrategienM.H"
 
 
 using namespace std;
@@ -62,6 +63,7 @@ int main(int argc, const char **argv) {
 					case 3: cout << i << "RANDSHOOTIS";break;
 					case 4: cout << i << "INTELLISTRAT";break;
 					case 5: cout << i << "INTELLISTRATDIAGONAL";break;
+					case 6: cout << i << "VerbrannteFelder";break;
 					default: cout << "Die Strategie existiert nicht.\n";exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
 					}
 
@@ -77,6 +79,7 @@ int main(int argc, const char **argv) {
 			case 3: cout << RandShootiS(c)<< endl;break;
 			case 4: cout << IntelliStrat(c)<< endl;break;
 			case 5: cout << IntelliStratDiagonal(c)<< endl;break;
+			case 6: cout << VerbrannteFelder(c)<< endl;break;
 			default: cout << "Die Strategie existiert nicht.\n";break;exit(0); // Fehlermeldung wird nur einmal erzeugt und nicht anz-mal ausgegeben
 			}
 
