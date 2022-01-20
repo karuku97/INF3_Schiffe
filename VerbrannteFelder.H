@@ -1,5 +1,5 @@
-#ifndef STRATEGIENM_H
-#define STRATEGIENM_H
+#ifndef VERBRANNTEFELDER_H
+#define VERBRANNTEFELDER_H
 
 #include <string>
 #include <iostream>
@@ -15,6 +15,6 @@ using namespace std;
 
  int VerbrannteFelder (TCPclient c);
 
-int Schiffsuche (TCPclient c);
 
-#endif /* STRATEGIENM_H*/
+
+#endif /* VERBRANNTEFELDER_H*/
