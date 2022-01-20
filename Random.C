@@ -13,7 +13,7 @@
 #include "Random.H"
 
 int RandShoot(TCPclient c){
-	//stringstream ss;
+
 	string msg;
 	int moves=0;
 	while(1){
@@ -21,22 +21,17 @@ int RandShoot(TCPclient c){
 		int y = (rand()%10)+1;
 
 		msg = shootPos (x,y,c);
-		// ss.str("");
-		// ss <<"KORDSX"<< x << "Y" << y<<"#";
-		// msg = ss.str();
-		// // cout << "client sends:" << msg << endl;
-		// c.sendData(msg);
+
 		moves++;
-		// msg = c.receive(32);
-		// // cout << "got response:" << msg << endl;
+
 
 		if(msg.compare(0,8,"GameOver")==0)goto Part1;
 
-					//sleep(1);
+
 		}
 
 		Part1:
-		//cout << "Moves: "<< moves <<endl;
+
 		return moves;
 }
 
@@ -47,7 +42,7 @@ int RandShoot(TCPclient c){
  */
 
 int RandShootiS(TCPclient c){
-	//stringstream ss;
+
 	string msg;
 	int moves=0;
 
@@ -69,24 +64,19 @@ int RandShootiS(TCPclient c){
 		if(brain[x-1][y-1] == false){ // gleicht ab, ob das Feld bereits beschossen wurde
 
 		msg = shootPos (x,y,c);
-		// ss.str("");
-		// ss <<"KORDSX"<< x << "Y" << y<<"#";
-		// msg = ss.str();
-		// //cout << "client sends:" << msg << endl;
-		// c.sendData(msg);
+
 		brain[x-1][y-1] = true;// setzt beschossenes Feld auf "true"
 
 		moves++;
-		// msg = c.receive(32);
-		// cout << "got response:" << msg << endl;
+
 
 
 		if(msg.compare(0,9,"GameOver")==0)goto Part1;
 		}
-					//sleep(1);
+					
 		}
 
 		Part1:
-		//cout << "Moves: "<< moves <<endl;
+		
 		return moves;
 }
