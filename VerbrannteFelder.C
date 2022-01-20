@@ -7,7 +7,7 @@
 
 
 
-#include "VerbrannteFelder.H""
+#include "VerbrannteFelder.H"
 
 
 
@@ -33,17 +33,7 @@
 
 				y++;			
 				x=(y%2)+1;
-				// if (y%2==0){
 
-				// 	x = 2;
-
-				// }
-
-				// if (y%2!=0){
-
-				// 	x = 1;
-				
-				// }
 			}
 
 

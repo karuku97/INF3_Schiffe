@@ -174,40 +174,7 @@ string shootPos(int x, int y, TCPclient c)
    
       
 
-    // struct Quadrantenparameter;
-    // // {
-    // //     int Xmin;
-    // //     int Xmax;
-    // //     int ymin;
-    // //     int ymax;
-    // // } // Q1, Q2, Q3, Q4;
-
-    // // Q1 = {0, 4, 0, 4},
-    // // Q2 = {5, 9, 0, 4},
-    // // Q3 = {0, 4, 5, 9},
-    // // Q4 = {5, 9, 5, 9};
-
-    // Quadrantenparameter getQuadrant(int id)
-    // {
-    //     switch (id)
-    //     {
-    //     case 1:
-    //         return Q1;
-    //         break;
-    //     case 2:
-    //         return Q2;
-    //         break;
-    //     case 3:
-    //         return Q3;
-    //         break;
-    //     case 4:
-    //         return Q4;
-    //         break;
-
-    //     default:
-    //         return Q1;
-    //     }
-    // }
+ 
 
 Feldstatus shootline(int tmpX, int tmpY, int Rx, int Ry, int& moves, TCPclient c, SpielfeldVerwaltung& Feld){
  
