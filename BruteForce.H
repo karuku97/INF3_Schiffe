@@ -7,6 +7,7 @@
  #include <sstream>
  #include <vector>
 #include "SIMPLESOCKET.H"
+#include "SpielFeldverwaltung.H"
 
 int BruteForceDiagonal(TCPclient c);
 //Versuche alle Felder von Oben nach unten und links nach recht bis das Spiel zuende ist
