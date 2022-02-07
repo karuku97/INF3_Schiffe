@@ -1,7 +1,17 @@
 \section*{Einführung}
-Im Oktober 2021 ist unser Projekt gestartet, 
 
-Zum Starten des Programmes wird erst der Befehl "make all" in die Konsole eingegeben. Danach wird in einer separaten Konsole erst der Server mit dem Befehl "./Server" gestartet. In der anderen Konsole wird dann der Client gestartet, dies geschied durch die Eingabe des Befehls "./Client 20 3" die beiden Zahlen sind beispielhaft, die erste Zahl steht für die Anzahl der Spiele die gespielt werden sollen und die zweite Zahl steht Stellvertretend für die Methode die für die Spiele verwendet werden soll. 0: BRUTEFORCE, 1: BRUTEFORCEDIAGONAL, 2: RANDSHOOT, 3: RANDSHOOTIS, 4: INTELLISTRAT, 5: INTELLISTRATDIAGONAL. Nachdem Ende jedes Spiel wird die Anzahl der Schüsse in die Konsole geschrieben und kann zur Auswertung verwendet werden.
-- kleine Erklärung was passiert ist
-- kleine Erklärung wie das Programm gestartet wird
+Das Projekt startete Ende Oktober 2021 und am 04.11.2021 wurden erste Dateien im Repository hochgeladen.\newline
+Dabei handelte es sich um die Readme und Dateien die uns zur Verfügung gestellt wurden.
+Dazu gehörten: TASK3, Client, Server, Simplesocket und ein Makefile.\newline
+\newline
+Die ersten Strategien wurden am 17.11.21 hochgeladen, einmal Intellistrat und \newline IntellistratDiagonal, sowie Randshoot.
+Die Funktion Randshoot war zu diesem Zeitpunkt noch als Funktion in der Client Datei und wurde erst später Ausgelagert.\newline
+\newline
+Ende November kamen noch die Strategien Bruteforce und BruteforceDiagonal dazu und die Funktion Randshoot wurde als eigenständige Datei ausgelagert.\newline
+\newline
+Im Dezember wurde noch die Funktion RandshootIs hinzugefügt. Es fanden ebenfals größere Überarbeitungen des Codes statt, unteranderem die Aufteilung der Strategien in Header- und C++ -Files.\newline Ende Dezember war die erste Version des Projekts fertig, sodass im Januar 2022 nur kleinere Änderungen des Codes und Bugfixes nötig waren und eine erste statistische Auswertung zur durchschnittlichen Anzahl von Schüssen der einzelnen Strategien möglich war. 
+
+\subsection*{Starten des Programms}
+Zum Starten des Programms wird erst der Befehl "make all" in die Konsole eingegeben. Danach wird in einer separaten Konsole erst der Server mit dem Befehl "./Server" gestartet. In der anderen Konsole wird dann der Client gestartet, dies geschied durch die Eingabe des Befehls "./Client 20 3" die beiden Zahlen sind beispielhaft, die erste Zahl steht für die Anzahl der Spiele die gespielt werden sollen und die zweite Zahl steht Stellvertretend für die Methode die für die Spiele verwendet werden soll. 0: BRUTEFORCE, 1: BRUTEFORCEDIAGONAL, 2: RANDSHOOT, 3: RANDSHOOTIS, 4: INTELLISTRAT, 5: INTELLISTRATDIAGONAL. Nachdem Ende jedes Spiel wird die Anzahl der Schüsse in der Konsole ausgegeben und kann zur Auswertung verwendet werden.
+
 
