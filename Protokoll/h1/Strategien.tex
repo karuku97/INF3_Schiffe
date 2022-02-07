@@ -1,23 +1,40 @@
 \section*{Strategien und Kommunikation}
 
+\subsection*{Client}
+
+
+
+
+\subsection*{Server}
+
 \subsection*{Protokoll Server}
-Zur Kommunikation zwischen Server und Klient läuft nach folgendem Protokoll ab.\\
+Zur Kommunikation zwischen Server und Client läuft nach folgendem Protokoll ab.\\
 \includegraphics[]{Screenshot_2022-01-12 Commits · karuku97 INF3_Schiffe.png}
 \\
-\subsection*{Strategien}
+\subsubsection*{Strategien}
 Zum beschießen des erzeugten Spielfelds werden (hier finale Anzahl einfügen) unterschiedliche Strategien verwendet.
 
 \subsubsection*{Bruteforce}
 
 \subsubsection*{BruteforceDiagonal}
 
-\subsubsection{Randshoot}
+\subsubsection*{Randshoot}
 
 \subsubsection*{RandshootIs}
 
 \subsubsection*{Intellistrat}
 
-\subsubsection{IntellistratDiagonal}
+\subsubsection*{IntellistratDiagonal}
+
+\subsection*{Spielfeldverwaltung}
+
+Die Spielfeldverwaltung setzt sich aus folgenden Funktionen und einer Klasse zusammen.
+Die gleichnahmige Klasse SpielfeldVerwaltung, besitz ein eindimensionales Array Spielfeld mit 100 Variablen des Typs Enum(die dazugehörigen Enums sind ausserhalb der Klasse definiert)
+, die integer Variablen lastX, lastY, lastPos und die Funktionen CoordsToPosition, int SpielfeldPositionToCoordsX, SpielfeldPositionToCoordsY, SchiffePositionToCoordsX, 
+SchiffePositionToCoordsY, getFieldstatus, getLastFieldStatus, Statusreport, SchiffPosition, ServerStringToEnum. Die Funktionen CoordsToPosition, int SpielfeldPositionToCoordsX, 
+SpielfeldPositionToCoordsY, SchiffePositionToCoordsX, SchiffePositionToCoordsY, getFieldstatus, searchShipclass leifern einen Rückgabewert des Typs Integer, Statusreport, 
+SchiffPosition liefern keinen Rückgabewert und Serverstring toEnum liefert einen Enum als Rückgabewert. Das eindimensionale Array Spielfeld ist dafür da um den Status des 
+beschossenen Feldes zu Speichern, folgende Möglichkeiten bestehen NICHT\_BESCHOSSEN = 0, WASSER = 1, SCHIFF\_GETROFFEN = 2, SCHIFF\_ZERSTOERT = 3, GAMEOVER = 4, ERROR = -1
 
 
 Erklärung der einzelnen Strategien, was unterscheidet die Ideen

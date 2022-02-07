@@ -15,7 +15,7 @@
 
 void restart(TCPclient c);
 
-    enum Feldstatus
+enum Feldstatus
     {
         NICHT_BESCHOSSEN = 0,
         WASSER = 1,
