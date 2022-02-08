@@ -71,6 +71,7 @@ int BruteForce(TCPclient c){
 			 	for(int y =1 ; y<= 10 ; y++){
 
 			msg = shootPos(x, y, c);
+			moves++;
 
 
 					if(msg.compare(0,8,"GameOver")==0)return moves;
