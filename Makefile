@@ -3,7 +3,7 @@ CC=g++
 CFLAGS=$(shell pkg-config --cflags opencv) 
 LIBS=$(shell pkg-config --libs opencv) 
 
-OBJS= main.o   TASK3.o  SIMPLESOCKET.o Random.o IntelliStrat.o BruteForce.o StrategienM.o SpielFeldverwaltung.o
+OBJS= main.o   TASK3.o  SIMPLESOCKET.o Random.o IntelliStrat.o BruteForce.o VerbrannteFelder.o SpielFeldverwaltung.o
 DEMOTARGET=main Server Client
 
 
@@ -19,7 +19,7 @@ IntelliStrat.o:	IntelliStrat.C
 BruteForce.o:	BruteForce.C
 	$(CC) -c $<  -std=c++11
 
-StrategienM.o:	StrategienM.C
+VerbrannteFelder.o:	VerbrannteFelder.C
 	$(CC) -c $<  -std=c++11
 
 SpielFeldverwaltung.o: SpielFeldverwaltung.C
@@ -53,7 +53,7 @@ Server:	Server.o
 	$(CC) -o Server Server.o  SIMPLESOCKET.o TASK3.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
 
 Client:	Client.o
-	$(CC) -o Client Client.o SIMPLESOCKET.o BruteForce.o IntelliStrat.o Random.o StrategienM.o SpielFeldverwaltung.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
+	$(CC) -o Client Client.o SIMPLESOCKET.o BruteForce.o IntelliStrat.o Random.o VerbrannteFelder.o SpielFeldverwaltung.o -L/usr/lib/x86_64-linux-gnu -ldl -lstdc++  -std=c++11
 
 
 clean:

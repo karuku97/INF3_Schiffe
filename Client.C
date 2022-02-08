@@ -16,7 +16,7 @@
 #include "IntelliStrat.H"
 #include "BruteForce.H"
 #include "Random.H"
-#include "StrategienM.H"
+#include "VerbrannteFelder.H"
 
 
 using namespace std;
