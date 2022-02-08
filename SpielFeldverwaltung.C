@@ -24,10 +24,10 @@ string shootPos(int x, int y, TCPclient c)
         ss.str("");
         ss << "KORDSX" << (x) << "Y" << (y) << "#";
         msg = ss.str();
-        cout << "client sends:" << msg << endl;
+        // cout << "client sends:" << msg << endl;
         c.sendData(msg);
         msg = c.receive(32);
-        cout << "got response:" << msg << endl;
+        // cout << "got response:" << msg << endl;
         return msg;
     }
 
