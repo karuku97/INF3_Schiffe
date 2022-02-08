@@ -27,7 +27,6 @@ enum Feldstatus
 
     string shootPos(int x, int y, TCPclient c);
 
-    void restart(TCPclient c);
 
     class SpielfeldVerwaltung
     {
