@@ -9,7 +9,7 @@
  *
  * \file BruteForce.H
  *
- * \brief contains the declarations of the two Brute Force strategies.
+ * \brief contains two Brute Force strategies.
  */
 #ifndef BRUTEFORCE_H
 #define BRUTEFORCE_H

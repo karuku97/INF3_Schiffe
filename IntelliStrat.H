@@ -9,7 +9,7 @@
  *
  * \file IntelliStrat.H
  *
- * \brief contains the declarations of the two intelligent strategies.
+ * \brief contains two intelligent strategies.
  */
 
 #ifndef INTELLISTRAT_H
@@ -17,10 +17,10 @@
 
 
 #include <string>
- #include <iostream>
- #include <unistd.h> //contains various constants
- #include <sstream>
- #include <vector>
+#include <iostream>
+#include <unistd.h> //contains various constants
+#include <sstream>
+#include <vector>
 #include "SIMPLESOCKET.H"
 
 
