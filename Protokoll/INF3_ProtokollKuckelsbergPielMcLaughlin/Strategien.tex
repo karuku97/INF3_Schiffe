@@ -20,7 +20,22 @@ Zum beschießen des erzeugten Spielfelds werden (hier finale Anzahl einfügen) u
 
 \subsubsection*{Randshoot}
 
+Bei dieser Strategie wird mittels der rand()-Funktion die Koordinaten von 1 bis 10 für
+beide per Zufall ausgewählt und eine Anfrage mit diesen beliebigen Koordinaten an den
+Server geschickt. Doppelungen von Anfragen oder mehr als zweimal können auftreten,
+da nicht gespeichert wird, ob das Feld bereits angefragt wurde oder nicht.
+
 \subsubsection*{RandshootIs}
+
+Diese Strategie ist die Erweiterung zu der randshoot-Strategie. Die Generierung der
+Koordinaten erfolgt wie bei der ersten Strategie. Ergänzend hinzugekommen ist, dass
+diese Strategie die Anfragen in einem zweidimensionalen Feld abspeichert und nach
+einer erneuten Generierung prüft, ob diese Koordinaten bereits angefragt wurden. Ist
+dies der Fall, werden neue Koordinaten generiert. Es erfolgt dann keine neue Anfrage an
+den Server bei bereits angefragten Koordinaten, die bereits vorher schon angefragt
+wurden. Fällt das Ergebnis dieser Anfragen negativ aus, so wird eine Anfrage an den
+Server gestellt. Wird eine Anfrage gestellt, wird der Wert der Koordinaten in der Matrix
+(2D-Feld) gemäß der boolschen Wahrheitswerte von „false“ auf „true“ geändert.
 
 \subsubsection*{Intellistrat}
 
