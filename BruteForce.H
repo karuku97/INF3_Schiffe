@@ -1,3 +1,16 @@
+/*
+ * BruteForce.C
+ *
+ *  Created on: 22.12.2021
+ *      Author: kkuckelsberg
+ */
+
+/**
+ *
+ * \file BruteForce.H
+ *
+ * \brief contains the declarations of the two Brute Force strategies.
+ */
 #ifndef BRUTEFORCE_H
 #define BRUTEFORCE_H
 
@@ -9,9 +22,30 @@
 #include "SIMPLESOCKET.H"
 #include "SpielFeldverwaltung.H"
 
-int BruteForceDiagonal(TCPclient c);
-//Versuche alle Felder von Oben nach unten und links nach recht bis das Spiel zuende ist
 
+
+/**
+  *
+  * \brief The strategie shoots on every diagonal line. Until the Game returnes "GameOver"
+  *
+  *	\param TCPclient c, client Object
+  *
+  * \return int how many shoots the stategie had done.
+  *
+  */
+int BruteForceDiagonal(TCPclient c);
+
+
+/**
+  *
+  * \brief The strategie shoots on every row and collum. Until the Game returnes "GameOver"
+  *
+  *
+  *	\param TCPclient c, client Object
+  *
+  * \return int how many shoots the stategie had done.
+  *
+  */
 int BruteForce(TCPclient c);
 
 #endif /* BRUTEFORCE_H */
