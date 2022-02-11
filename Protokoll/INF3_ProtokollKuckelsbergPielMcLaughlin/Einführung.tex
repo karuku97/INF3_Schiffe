@@ -1,4 +1,13 @@
-\section*{Einführung}
+\section{Einführung}
+
+Die Aufgabe für dieses Projekt war es, ein Programm zu erstellen, mit dessen Hilfe sich eine bzw. mehrere Strategien für das ''Spiel Einbahn Schiffe versenken'' bewerten ließ. Dafür 
+sollte 
+ein Server implementiert werden, welcher ein Spielfeld erzeugt,\\ Koordinaten entgegennimmt und entsprechend dem Status des angefragten Feldes eine passende Antwort zurückgibt (siehe 3.1 Protokoll Server). 
+Des Weiteren sollte ein Client implementiert werden.
+Dieser soll eine eigenständig programmierte Strategie \\
+automatisch nach einer Aufforderung und ohne weitere Eingaben eines Benutzers ausführen, bis das Spiel beendet ist. \\
+Eine weitere Funktion des Clients soll sein, dass dieser die benötigten Spielzüge zählt, speichert und am Ende ausgibt. Ebenfalls sollen die 
+Strategien auf ihre mittlere Anzahl von Spielzügen verglichen werden.\newline
 
 Das Projekt startete Ende Oktober 2021 und am 04.11.2021 wurden erste Dateien im Repository hochgeladen.\newline
 Dabei handelte es sich um die Readme und Dateien die uns zur Verfügung gestellt wurden.
@@ -9,9 +18,28 @@ Die Funktion Randshoot war zu diesem Zeitpunkt noch als Funktion in der Client D
 \newline
 Ende November kamen noch die Strategien Bruteforce und BruteforceDiagonal dazu und die Funktion Randshoot wurde als eigenständige Datei ausgelagert.\newline
 \newline
-Im Dezember wurde noch die Funktion RandshootIs hinzugefügt. Es fanden ebenfals größere Überarbeitungen des Codes statt, unteranderem die Aufteilung der Strategien in Header- und C++ -Files.\newline Ende Dezember war die erste Version des Projekts fertig, sodass im Januar 2022 nur kleinere Änderungen des Codes und Bugfixes nötig waren und eine erste statistische Auswertung zur durchschnittlichen Anzahl von Schüssen der einzelnen Strategien möglich war. 
+Im Dezember wurde noch die Funktion RandshootIs hinzugefügt. Es fanden ebenfals größere Überarbeitungen des Codes statt, unteranderem die Aufteilung der Strategien in Header- und C++ 
+-Files.\newline Ende Dezember war die erste Version des Projekts fertig, sodass im Januar 2022 nur kleinere Änderungen des Codes und Bugfixes nötig waren und eine erste statistische 
+Auswertung zur durchschnittlichen Anzahl von Schüssen der einzelnen Strategien möglich war. 
 
-\subsection*{Starten des Programms}
-Zum Starten des Programms wird erst der Befehl "make all" in die Konsole eingegeben. Danach wird in einer separaten Konsole erst der Server mit dem Befehl "./Server" gestartet. In der anderen Konsole wird dann der Client gestartet, dies geschied durch die Eingabe des Befehls "./Client 20 3" die beiden Zahlen sind beispielhaft, die erste Zahl steht für die Anzahl der Spiele die gespielt werden sollen und die zweite Zahl steht Stellvertretend für die Methode die für die Spiele verwendet werden soll. 0: BRUTEFORCE, 1: BRUTEFORCEDIAGONAL, 2: RANDSHOOT, 3: RANDSHOOTIS, 4: INTELLISTRAT, 5: INTELLISTRATDIAGONAL. Nachdem Ende jedes Spiel wird die Anzahl der Schüsse in der Konsole ausgegeben und kann zur Auswertung verwendet werden.
+\subsection{Starten des Programms}
+Zum Starten des Programms wird erst der Befehl make all in die Konsole eingegeben. Danach wird in einer separaten Konsole erst der Server mit dem Befehl "./Server" gestartet. In der 
+anderen Konsole wird dann der Client gestartet, Dies geschied durch die Eingabe des Befehls "./Client 20 3" die beiden Zahlen sind beispielhaft, die erste Zahl steht für die Anzahl 
+der Spiele die gespielt werden sollen und die zweite Zahl steht Stellvertretend für die Methode die für die Spiele verwendet werden soll.
+
+\begin{table}[h]
+    \begin{tabular}{lllll}
+     Strategienummer & Name &  &  &  \\
+     0 & BRUTEFORCE &  &  &  \\
+     1 & BRUTEFORCEDIAGONAL &  &  &  \\
+     2 & RANDSHOOT &  &  &  \\
+     3 & RANDSHOOTIS &  &  &  \\
+     4 & INTELLISTRAT &  &  &  \\ 
+     5 & INTELLISTRATDIAGONAL &  &  & 
+    \end{tabular}
+    \end{table}
+
+Nachdem Ende jedes Spiel wird die Anzahl der Schüsse in der Konsole ausgegeben und kann zur Auswertung verwendet 
+werden.
 
 
