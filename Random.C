@@ -3,12 +3,7 @@
  *      Author: pascalpiel
  */
 
-/**
- *
- * \file Random.C
- *
- * \brief contains two strategies, working with the rand()-function. They are contained as functions.
- */
+
 
 #include "Random.H"
 

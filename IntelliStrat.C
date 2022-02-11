@@ -2,7 +2,7 @@
  * IntelliStrat.C
  *
  *  Created on: 22.12.2021
- *      Author: pascalpiel
+ *      Author: kkuckelsberg
  */
 #include "IntelliStrat.H"
 
@@ -317,7 +317,6 @@ int IntelliStratDiagonal(TCPclient c){
 		}
 		return moves;
 }
-
 
 
 

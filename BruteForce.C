@@ -2,7 +2,7 @@
  * BruteForce.C
  *
  *  Created on: 22.12.2021
- *      Author: pascalpiel
+ *      Author: kkuckelsberg
  */
 #include "BruteForce.H"
 
@@ -83,5 +83,4 @@ int BruteForce(TCPclient c){
 		return moves;
 
 }
-
 
