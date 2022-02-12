@@ -1,35 +1,45 @@
-\section*{Strategien und Kommunikation}
+\section{Strategien und Kommunikation}
 
-\subsection*{Client}
+\subsection{Client}
 
+Der Client erwartet beim Aufrufen eine zusätzliche Eingabe des Benutzers. Dabei handelt es sich um ''Client'' und zwei Zahlen. Die erste Zahl gibt an wie oft 
+eine Strategie ausgeführt werden soll, es werden nur Integer akzeptiert. Mit der zweiten Zahl wird die Strategie ausgewählt, es werden nur Integer im Bereich von 
+0 -6 akzeptiert. \\Nach der Eingabe wird die passende Strategie aufgerufen und in einer for-Schleife entsprechend oft der Eingabe ausgeführt.
 
+\subsection{Server}
 
+Der Server ist eine Kindklasse, die public von TCPserver geerbt hat. Der Server wurde um die Variablen world und Shootresult erweitert, welche private sind. 
+Eine Funktion des Servers ist myResponse, Sie bekommt als Eingabe einen String der vom Client geschickt wird, 
+vergleicht die Koordinaten mit dem internen Spielfeld und gibt einen String als Antwort zurück. Es gibt folgende Antwortmöglichkeiten: ''Water'', ''ShipHit'', 
+ShipDestroyed'', ''AllShipsDestroyed'', ''GameOver'', abhqngig vom internen SPielfeld. Schickt der Client als String ''Restart'' erstellt der Server ein neues Spielfeld und das Spiel beginnt von neuem.
 
-\subsection*{Server}
-
-\subsection*{Protokoll Server}
+\subsection{Protokoll Server}
 Zur Kommunikation zwischen Server und Client läuft nach folgendem Protokoll ab.\\
-\includegraphics[scale=0.5]{Screenshot_2022-01-12 Commits · karuku97 INF3_Schiffe.png}
-\\
-\subsubsection*{Strategien}
-Zum beschießen des erzeugten Spielfelds werden (hier finale Anzahl einfügen) unterschiedliche Strategien verwendet.
+\includegraphics[scale=0.5]{ProtokollServer.png}\\
 
-\subsubsection*{Bruteforce}
+Wenn der Client eine Strategie ausgeführt, wird bei jedem Schuss ein String mit den zu beschießenden an den Server gesendet und der Server überprüft den Status auf dem internen Spielfeld und sendet eine Antwort in Form eines Strings zurück (siehe Tabelle Zeile 1 Spalte 2).
+Um ein neues Spiel zu beginnen, muss der Client den String \\''RESTART'' an den Server senden, dieser startet dann ein neues Spiel und sendet den String ''RESTARTED'' an den Client zurück. Um die Verbindung zu beenden, \\sendet der Client ''BYEBYE'', der Server sendet ''BYEBYE'' zurück und beendet die Verbindung.
+Sendet der Client einen String, der nicht dem Protokoll entspricht, antwortet der Server mit ''ERROR''. 
+
+\subsection{Strategien}
+Zum beschießen des erzeugten Spielfelds werden 7 unterschiedliche Strategien verwendet.
+
+\subsubsection{Bruteforce}
 
 Die Strategie BruteForce schießt nacheinander auf alle Zeilen und alle Spalten, bis der Server mitteilt, dass alle Schiffe zerstört sind. Bei jedem Schuss wird ein Schuss Zähler hochgezählt, dieser wird am Ende der Strategie zurückgegeben.
 
-\subsubsection*{BruteforceDiagonal}
+\subsubsection{BruteforceDiagonal}
 
 Die Strategie schießt nacheinander auf alle Felder im Spiel. Die Reihenfolge der Schüsse ist diagonal angeordnet. Die Strategie wird beendet, wenn der Server mitteilt, dass alle Schiffe zerstört sind. Bei jedem Schuss wird ein Schuss Zähler hochgezählt, dieser wird am Ende der Strategie zurückgegeben.
 
-\subsubsection*{Randshoot}
+\subsubsection{Randshoot}
 
 Bei dieser Strategie wird mittels der rand()-Funktion die Koordinaten von 1 bis 10 für
 beide per Zufall ausgewählt und eine Anfrage mit diesen beliebigen Koordinaten an den
 Server geschickt. Doppelungen von Anfragen oder mehr als zweimal können auftreten,
 da nicht gespeichert wird, ob das Feld bereits angefragt wurde oder nicht.
 
-\subsubsection*{RandshootiS}
+\subsubsection{RandshootiS}
 
 Diese Strategie ist die Erweiterung zu der randshoot-Strategie. Die Generierung der
 Koordinaten erfolgt wie bei der ersten Strategie. Ergänzend hinzugekommen ist, dass
@@ -41,15 +51,23 @@ wurden. Fällt das Ergebnis dieser Anfragen negativ aus, so wird eine Anfrage an
 Server gestellt. Wird eine Anfrage gestellt, wird der Wert der Koordinaten in der Matrix
 (2D-Feld) gemäß der boolschen Wahrheitswerte von „false“ auf „true“ geändert.
 
-\subsubsection*{Intellistrat}
+\subsubsection{Intellistrat}
 
-Die intelligente Strategie schießt nacheinander (Zeile und Spalte) auf das Spielfeld. Nach jedem Schuss auf ein Feld wird in einer Wahrheitswertmatrix die beschossene Position markiert. Wenn die Strategie einen Treffer erzielt, zerstört Sie zuerst das getroffene Schiff. Dies tut Sie, indem Sie auf die horizontalen und vertikalen Nachbar Felder schießt, bis ihr der Server mitteilt, dass das Schiff zerstört ist. Im Anschluss maskiert Sie die beschossenen und die umliegenden Felder in der Wahrheitswertmatrix, da dort kein weiteres Schiff liegen kann. Bei jedem Schuss wird ein Schuss Zähler hochgezählt, dieser wird am Ende der Strategie zurückgegeben.
+Die intelligente Strategie schießt nacheinander (Zeile und Spalte) auf das Spielfeld. Nach jedem Schuss auf ein Feld wird in einer Wahrheitswertmatrix die 
+beschossene Position markiert. Wenn die Strategie einen Treffer erzielt, zerstört Sie zuerst das getroffene Schiff. Dies tut Sie, indem Sie auf die horizontalen 
+und vertikalen Nachbar Felder schießt, bis ihr der Server mitteilt, dass das Schiff zerstört ist. Im Anschluss maskiert Sie die beschossenen und die umliegenden 
+Felder in der Wahrheitswertmatrix, da dort kein weiteres Schiff liegen kann. Bei jedem Schuss wird ein Schuss Zähler hochgezählt, dieser wird am Ende der 
+Strategie zurückgegeben.
 
-\subsubsection*{IntellistratDiagonal}
+\subsubsection{IntellistratDiagonal}
 
-Die diagonale intelligente Strategie ist auf der einfachen intelligenten Strategie aufgebaut. Der einzige unterscheid besteht darin, dass Sie nur jede zweite diagonale Reihe beschießt. Dies ist möglich, da keine Schiffe existieren, die nur ein Feld groß sind.
+Die diagonale intelligente Strategie ist auf der einfachen intelligenten Strategie aufgebaut. Der einzige unterscheid besteht darin, dass Sie nur jede zweite 
+diagonale Reihe beschießt. Dies ist möglich, da keine Schiffe existieren, die nur ein Feld groß sind.
 
-\subsection*{Spielfeldverwaltung}
+
+\subsection{Verbrannte Felder}
+
+\subsection{Spielfeldverwaltung}
 
 Die SpielFeldverwaltung setzt sich aus folgenden Funktionen und einer Klasse zusammen,
 void restart, enum Feldstatus, string shootPos, Feldstatus shootline, Feldstatus Nachbar und der Klasse SpielfeldVerwaltung.
